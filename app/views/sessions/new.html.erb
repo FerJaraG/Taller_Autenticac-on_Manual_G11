@@ -1,0 +1,9 @@
+<h1>Inicio Sesion</h1>
+
+<%= form_with(model: @user, local: true) do |form| %>
+	<%= form.label :email %>
+	<%= form.text_field :email %>
+	<%= form.label :password %>
+	<%= form.password_field :password %>
+	<%= form.submit 'Enviar' %>
+<% end %>

@@ -12,7 +12,9 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Link1</a></li>
+        <% if logged? %>
+          <li><a href="<%= my_histories_path %>">Mis Historias</a></li>
+        <% end %>
         <li><a href="#">Link2</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -33,3 +35,18 @@
   </div>
 </nav>
 
+      <% if logged? %>
+        <li class="nav-item">
+          <%= link_to current_user.email, '#', class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Cerrar sesión', session_path(current_user), method: :delete, class: 'nav-link' %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Iniciar Sesión', users_sign_in_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Registrarse', users_sign_up_path, class: 'nav-link' %>
+        </li>
+      <% end %>
